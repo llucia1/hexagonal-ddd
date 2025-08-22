@@ -1,4 +1,4 @@
-# 🏡 Community Spaces Booking — MVP
+# 🏡 Ejemplo Arquitectura Hexagonal con DDD
 
 Prototipo funcional para un módulo de reservas de espacios comunes en una comunidad de vecinos.  
 Incluye backend (Symfony + PHP) y frontend (pendiente), orquestado con Docker.
