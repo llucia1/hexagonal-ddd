@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile
+    container_name: fynkus-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:11
+    container_name: fynkus-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: fynkus
+      MYSQL_USER: fynkus_user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./backend/infra:/docker-entrypoint-initdb.d
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile
+    container_name: fynkus-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  db-data:

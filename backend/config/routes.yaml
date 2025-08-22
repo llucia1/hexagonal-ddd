@@ -1,0 +1,13 @@
+get_all_space:
+    resource: '../src/Space/Presentation/Rest/V1/'
+    type: annotation
+    prefix: /api/v1
+
+post_reservation:
+    resource: '../src/Reservation/Presentation/Rest/V1/'
+    type: annotation
+    prefix: /api/v1
+post_reservation_space_vailability:
+    resource: '../src/Reservation/Presentation/Rest/V1/'
+    type: annotation
+    prefix: /api/v1

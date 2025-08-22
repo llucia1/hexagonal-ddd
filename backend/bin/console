@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+use Fynkus\Kernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Dotenv\Dotenv;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+if (!isset($_SERVER['APP_ENV'])) {
+    (new Dotenv())->load(dirname(__DIR__).'/.env');
+}
+
+$debug = $_SERVER['APP_DEBUG'] ?? ($_SERVER['APP_ENV'] !== 'prod');
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $debug);
+$application = new Application($kernel);
+$application->run();

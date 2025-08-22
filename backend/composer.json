@@ -1,0 +1,69 @@
+{
+    "name": "fynkus/backend",
+    "description": "Fynkus - reservas de espacios comunes",
+    "type": "project",
+    "license": "MIT",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.2",
+        "doctrine/annotations": "^2.0",
+        "doctrine/dbal": "^3.8",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-migrations-bundle": "^3.5@dev",
+        "doctrine/orm": "^2.16",
+        "fakerphp/faker": "^1.23",
+        "lambdish/phunctional": "*",
+        "nelmio/api-doc-bundle": "^4.16",
+        "nelmio/cors-bundle": "^2.4",
+        "ramsey/uuid": "^4.7",
+        "stof/doctrine-extensions-bundle": "^1.13",
+        "symfony/console": "^5.4",
+        "symfony/dotenv": "^5.4",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "^5.4",
+        "symfony/messenger": "^5.4",
+        "symfony/monolog-bundle": "^3.8",
+        "symfony/validator": "^5.4",
+        "symfony/yaml": "^5.4"
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "guzzlehttp/guzzle": "^7.9",
+        "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^9.6",
+        "symfony/debug-bundle": "^5.4",
+        "symfony/maker-bundle": "^1.50",
+        "symfony/phpunit-bridge": "^5.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Fynkus\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fynkus\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse src --level=max",
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "require": "^5.4"
+        }
+    }
+}
